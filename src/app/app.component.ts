@@ -1,4 +1,5 @@
-import { Component } from '@angular/core';
+import { Component, Input } from '@angular/core';
+import { CartItem } from './models';
 
 @Component({
   selector: 'app-root',
@@ -6,5 +7,18 @@ import { Component } from '@angular/core';
   styleUrls: ['./app.component.css']
 })
 export class AppComponent {
-  title = 'workshop31';
+
+  cart: CartItem[] = []
+
+  process(action: CartItem) {
+    let i = this.cart.find(item => item.item == action.item)
+    if (action.quantity > 0) {
+      if (!i) {
+        this.cart.push({ ...action} as CartItem)
+      } else {
+        i.quantity += action.quantity
+      }
+    }
+    console.info('cart: ', this.cart)
+  }
 }

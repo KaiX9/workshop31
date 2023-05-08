@@ -1,0 +1,14 @@
+<div *ngIf="contents.length > 0 else emptyCart">
+    <h2>Your Cart</h2>
+    <ul>
+        <li *ngFor="let c of contents; let i = index">
+            <img src="/assets/fruits/{{ c.item }}.png" width="60">
+            <span class="space">{{ (c.item).replace('_', ' ') | titlecase }},</span>
+            (<i>quantity: {{ c.quantity }}</i>)
+            <button type="button" class="space" (click)="deleteFromCart(i)">Remove</button>
+        </li>
+    </ul>
+</div>
+<ng-template #emptyCart>
+    <h2>Your cart is empty</h2>
+</ng-template>

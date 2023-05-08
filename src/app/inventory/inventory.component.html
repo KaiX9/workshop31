@@ -1,0 +1,8 @@
+<h2>Inventory</h2>
+<h4>Please Select:</h4>
+
+<div *ngFor="let f of fruits, let i = index">
+    <img src="/assets/fruits/{{ f }}.png" width="60">
+    <span class="space">{{ (f.replace('_', ' ')) | titlecase}}</span>
+    <button type="button" class="space" (click)="addToCart(i)">Add</button>
+</div>
